@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { View, TextInput, StyleSheet,  } from "react-native";
+import { View, TextInput, StyleSheet } from "react-native";
+import { Colors, Constants, Fonts } from "../utils";
 
 const TaskInput = (props) => {
     const [focus, setFocus] = useState(false);
@@ -29,7 +30,7 @@ const SecondInput = (props) => {
                 value={props.value}
                 autoFocus={true}
                 autoCorrect={false}
-                autoCapitalize="none"
+                autoCapitalize={props.autoCapitalize}
                 onChangeText={text => props.onChangeText(text)}
                 style={[styles.input, props.style]}
 
@@ -40,32 +41,31 @@ const SecondInput = (props) => {
 
 const styles = StyleSheet.create({
     focused: {
-        // fontFamily: Font.INTER_SEMIBOLD,
+        fontFamily: Fonts.Semi_Bold_Font,
         fontSize: 12,
-        color: 'gray',
-        backgroundColor: 'white',
-        borderColor: '#16f0b2',
+        color: Colors.Gray,
+        backgroundColor: Colors.White,
+        borderColor: Colors.Green_Border,
         borderWidth: 1,
     },
     textInput: {
         borderRadius: 5,
         paddingLeft: 15,
-        // fontFamily: Font.INTER_REGULAR,
+        fontFamily: Fonts.Regular_Font,
         width: 290
     },
     notFocused: {
-        // fontFamily: Font.INTER_REGULAR,
+        fontFamily: Fonts.Regular_Font,
         fontSize: 12,
-        color: 'gray',
-        backgroundColor: '#e1e8e6'
+        color: Colors.Gray,
+        backgroundColor: Colors.Background_Gray
     },
     container: {
-        flexDirection: 'row',
+        flexDirection: Constants.row,
         borderRadius: 20,
-        // width: 312,
-        justifyContent: 'center',
+        justifyContent: Constants.center,
         padding: 3,
-        alignItems: 'center',
+        alignItems: Constants.center,
         height: 50,
         marginHorizontal: 24
     },

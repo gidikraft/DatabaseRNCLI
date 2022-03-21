@@ -36,7 +36,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -51,5 +51,23 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SpectralSC-Bold.ttf</string>
+		<string>SpectralSC-BoldItalic.ttf</string>
+		<string>SpectralSC-ExtraBold.ttf</string>
+		<string>SpectralSC-ExtraBoldItalic.ttf</string>
+		<string>SpectralSC-ExtraLight.ttf</string>
+		<string>SpectralSC-ExtraLightItalic.ttf</string>
+		<string>SpectralSC-Italic.ttf</string>
+		<string>SpectralSC-Light.ttf</string>
+		<string>SpectralSC-LightItalic.ttf</string>
+		<string>SpectralSC-Medium.ttf</string>
+		<string>SpectralSC-MediumItalic.ttf</string>
+		<string>SpectralSC-Regular.ttf</string>
+		<string>SpectralSC-SemiBold.ttf</string>
+		<string>SpectralSC-SemiBoldItalic.ttf</string>
+		<string>LobsterTwo-Italic.ttf</string>
+	</array>
 </dict>
 </plist>

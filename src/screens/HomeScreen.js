@@ -6,6 +6,7 @@ import { ListViewItemSeparator } from '../components/ItemSeperator';
 import styles from './screen.styles/HomeScreenStyles';
 import { openDatabase } from 'react-native-sqlite-storage';
 import { CustomText } from '../components/DbText';
+import { Constants } from '../utils';
 
 const db = openDatabase({
     name: 'rn_sqlite'
@@ -107,7 +108,7 @@ const HomeScreen = () => {
         return (
             <View style={styles.databaseList}>
                 <Text style={styles.dbNumber}>{item.id}</Text>
-                <Text >{item.name}</Text>
+                <Text style={styles.dbName} >{item.name}</Text>
             </View>
         )
     }
@@ -121,19 +122,19 @@ const HomeScreen = () => {
         <View style={styles.container}>
             <CustomText style={styles.header} caption={"HomeScreen"}/>
             <SecondInput 
-                placeholder={"Enter task"}
+                placeholder={Constants.Enter_task}
                 value={category}
                 onChangeText={(text) => setCategory(text)}
                 style={styles.taskInput}
             />
-            <BlueButton style={styles.blueButton} caption={"Submit Name"} onPress={addCategory} />
+            <BlueButton style={styles.blueButton} caption={Constants.Submit_Name} onPress={addCategory} />
 
             <TaskInput 
-                placeholder={"Enter id"}
+                placeholder={Constants.Enter_Id}
                 onChangeText={(text) => setInputUserId(text)}
                 value={inputUserId}
             />
-            <WhiteButton caption={"Submit Id"} onPress={deleteCategory}/>
+            <WhiteButton caption={Constants.Delete_Id} onPress={deleteCategory}/>
             <FlatList 
                 data = {data}
                 keyExtractor={(item, itemIndex) => itemIndex}

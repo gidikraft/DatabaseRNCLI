@@ -1,16 +1,17 @@
 import { StyleSheet, Dimensions } from "react-native";
+import { Constants, Fonts } from "../../utils";
 
 const { deviceHeight, deviceWodth } = Dimensions.get("window")
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        width: deviceHeight,
+        width: deviceWodth,
         height: deviceHeight
     },
     header: {
         fontSize: 22,
-        textAlign: 'center',
+        textAlign: Constants.center,
         marginTop: 20
     },
     blueButton: {
@@ -20,16 +21,21 @@ const styles = StyleSheet.create({
         marginTop: 30,
         borderWidth: 1,
         borderRadius: 10,
-        // color: '#e1e8e6',
         marginHorizontal: 20,
         paddingHorizontal: 10,
     },
     databaseList: {
-        flexDirection: 'row',
+        flexDirection: Constants.row,
         padding: 10,
     },
     dbNumber: {
-        marginRight: 10
+        marginRight: 10,
+        fontSize: 14,
+        fontFamily: Fonts.Bold_Fonts
+    },
+    dbName: {
+        fontFamily: Fonts.Italic_Fonts,
+        fontSize: 14
     }
 });
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text } from "react-native";
-import { Colors } from "../utils";
+import { Colors, Fonts } from "../utils";
 
 const CustomText = (props) => (
     <Text 
@@ -13,7 +13,8 @@ const CustomText = (props) => (
 
 const styles = StyleSheet.create({
     headerText: {
-        color: Colors.Black
+        color: Colors.Black,
+        fontFamily: Fonts.Bold_Italic_Font,
     }
 })
 

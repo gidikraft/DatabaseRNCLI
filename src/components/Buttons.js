@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
-import { Colors, Constants } from '../utils';
+import { Colors, Constants, Fonts } from '../utils';
 
 const BlueButton = (props) => (
     <View>
@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
         color: Colors.White,
         fontSize: 18,
         fontWeight: Constants.bold,
-        // textAlign: 'center',
+        fontFamily: Fonts.Bold_Fonts,
+
         
     },
     whiteButtonContainer: {
