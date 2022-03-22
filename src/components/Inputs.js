@@ -12,6 +12,7 @@ const TaskInput = (props) => {
                 placeholder={props.placeholder}
                 value={props.value}
                 onChangeText={text => props.onChangeText(text)}
+                autoCapitalize={props.autoCapitalize}
                 setFocus={focus}
                 onFocus={() => setFocus(true)}
                 onBlur={() => setFocus(false)}

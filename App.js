@@ -7,17 +7,19 @@
  */
 
 import React from 'react';
-import type {Node} from 'react';
 import {useColorScheme, } from 'react-native';
 import { Colors, } from 'react-native/Libraries/NewAppScreen';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './src/screens/HomeScreen';
+import DashboardScreen from './src/screens/DashboardScreen';
+import { Provider as StoreProvider } from 'react-redux';
+import { Store }  from './src/redux/store'
 
 const Stack = createNativeStackNavigator();
 
-const App: () => Node = () => {
+const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -25,17 +27,26 @@ const App: () => Node = () => {
   };
 
   return (
+    <StoreProvider store={ Store }>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            // options={{ headerShown: false }}
+          />
+
+          <Stack.Screen
+            name="Dashboard"
+            component={DashboardScreen}
+            options={{ headerShown: false }}
+          />
+          
+        </Stack.Navigator>
+      </NavigationContainer>
+    </StoreProvider>
     
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-        name="Home"
-        component={HomeScreen}
-        // options={{ headerShown: false }}
-        />
-        
-      </Stack.Navigator>
-    </NavigationContainer>
+    
   );
 };
 
