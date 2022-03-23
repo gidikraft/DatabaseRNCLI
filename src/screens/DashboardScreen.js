@@ -1,12 +1,13 @@
-import { View, Text, Alert, FlatList, TouchableOpacity, Linking, RefreshControl, } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import { View, Text, Alert, FlatList, TouchableOpacity, Linking, RefreshControl, ActivityIndicator } from 'react-native'
+import React, { useEffect, useState, useCallback } from 'react'
 import { openDatabase } from 'react-native-sqlite-storage';
 import { CustomText } from '../components/DbText';
 import { WhiteButton } from '../components/Buttons';
 import styles from './screen.styles/DashboardScreenStyles'
-import { setName } from '../redux/actions';
-import { useSelector, useDispatch } from 'react-redux';
+import { setName, getNews } from '../redux/actions';
+import { useSelector, useDispatch, increasePage } from 'react-redux';
 import { ListViewItemSeparator } from '../components/ItemSeperator';
+import { TaskInput } from '../components/Inputs';
 
 
 const db = openDatabase({
@@ -15,10 +16,13 @@ const db = openDatabase({
 
 const DashboardScreen = ({ navigation }) => {
 
-  const { name, news } = useSelector(state => state.userReducer);
+  const { name, news, page } = useSelector(state => state.userReducer);
   const dispatch = useDispatch();
 
   const [data, setData] = useState('');
+  // const [page, setPage] = useState(0);
+  const [searchInput, setSearchInput] = useState('');
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
   //fetch user details from db
   const fetchData = () => {
@@ -77,34 +81,22 @@ const DashboardScreen = ({ navigation }) => {
 
   useEffect(() => {
     fetchData()
-    dispatch(getNews)
+    dispatch(getNews())
   }, [])
 
+  const wait = (timeout) => new Promise(resolve => setTimeout(resolve, timeout));
 
-  const getNews = async () => {
-    try {
-      const result = await fetch('https://hn.algolia.com/api/v1/search_by_date?numericFilters=points%3E250&page=1', {
-        method: 'GET',
-        headers: {
-            'Content-type': 'application/json'
-        }
-      })
-      const json = await result.json()
-      // console.log(json)
-      if (json) {
-          setData(json.hits)
-      } else {
-          console.log("Error fetching News")
-      }
-    } catch (error) {
-        console.log(error)
-    }
-  };
+  const pullToRefresh = useCallback(() => {
+    setIsRefreshing(true);
+    dispatch(getNews())
+    wait(2000).then(() => setIsRefreshing(false));
+  }, []);
 
   const renderCategory = ({item}) => {
     return (
       <TouchableOpacity onPress={() => Linking.openURL(item.url)}>
         <View style={styles.databaseList}>
+
           <View style={styles.titleView}>
             <Text style={styles.itemTitle}>
               {item.author.charAt(0).toUpperCase() + item.author.slice(1)}:
@@ -112,17 +104,17 @@ const DashboardScreen = ({ navigation }) => {
           </View>
 
           <View style={styles.bodyView} >
-            
             <CustomText caption={item.title} style={styles.itemBody} />
+
             <CustomText 
               caption={ item.created_at.slice(11, 19) + ' ' + item.created_at.slice(0, 10) }
               style={styles.createdAt}
             />
+
             <CustomText
               caption={`Views: ${item.points}`} 
               style={styles.points}
             />
-            
           </View>
         </View>
       </TouchableOpacity>
@@ -132,19 +124,43 @@ const DashboardScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      {/* <Text>{name}</Text> */}
-      <CustomText caption={name} style={styles.header} onPress={() => console.log(data)} />
+      
+      <CustomText caption={name} style={styles.header} onPress={() => dispatch(increasePage())} />
+
+      {/* <CustomText caption={page} style={styles.header} /> */}
 
       <CustomText caption={"SINGING"} style={styles.header} onPress={() => navigation.navigate("Home")} />
 
       <WhiteButton caption={"Sign out"} style={styles.signoutButton} onPress={() => deleteCategory()}/>
 
-      <FlatList 
-          data = {data}
+      <TaskInput
+        placeholder={"Click here to search"}
+        value={searchInput}
+        onChangeText={text => setSearchInput(text)}
+        returnKeyLabel={"Search"}
+      />
+
+      {news? (
+        <FlatList 
+          data = {news}
           keyExtractor={(item, itemIndex) => itemIndex}
           ItemSeparatorComponent={ListViewItemSeparator}
+          refreshControl={
+            <RefreshControl
+                refreshing={isRefreshing}
+                onRefresh={pullToRefresh}
+                tintColor={"blue"}
+            />
+          }
           renderItem={renderCategory}
-      />
+        /> ) : (
+          <ActivityIndicator 
+            animating={true} 
+            size={"large"}
+            color="green"
+          />
+        )}
+      
 
     </View>
   )

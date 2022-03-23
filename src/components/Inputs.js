@@ -9,6 +9,7 @@ const TaskInput = (props) => {
         <View style={[styles.container,
             focus ? styles.focused: styles.notFocused]}>
             <TextInput 
+                returnKeyLabel={props.returnKeyLabel}
                 placeholder={props.placeholder}
                 value={props.value}
                 onChangeText={text => props.onChangeText(text)}
