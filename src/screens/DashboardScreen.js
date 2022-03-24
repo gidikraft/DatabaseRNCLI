@@ -4,8 +4,8 @@ import { openDatabase } from 'react-native-sqlite-storage';
 import { CustomText } from '../components/DbText';
 import { WhiteButton } from '../components/Buttons';
 import styles from './screen.styles/DashboardScreenStyles'
-import { setName, getNews } from '../redux/actions';
-import { useSelector, useDispatch, increasePage } from 'react-redux';
+import { setName, getNews, increasePage } from '../redux/actions';
+import { useSelector, useDispatch } from 'react-redux';
 import { ListViewItemSeparator } from '../components/ItemSeperator';
 import { TaskInput } from '../components/Inputs';
 
@@ -89,47 +89,51 @@ const DashboardScreen = ({ navigation }) => {
   const pullToRefresh = useCallback(() => {
     setIsRefreshing(true);
     dispatch(getNews())
-    wait(2000).then(() => setIsRefreshing(false));
+    // wait(2000).then(() => setIsRefreshing(false));
+    setIsRefreshing(false)
   }, []);
 
   const renderCategory = ({item}) => {
-    return (
-      <TouchableOpacity onPress={() => Linking.openURL(item.url)}>
-        <View style={styles.databaseList}>
+    if(item.title.toLowerCase().includes(searchInput.toLowerCase().trim())
+      || item.author.toLowerCase().includes(searchInput.toLowerCase().trim())) {
+      return (
+        <TouchableOpacity onPress={() => Linking.openURL(item.url)}>
+          <View style={styles.databaseList}>
 
-          <View style={styles.titleView}>
-            <Text style={styles.itemTitle}>
-              {item.author.charAt(0).toUpperCase() + item.author.slice(1)}:
-            </Text>
+            <View style={styles.titleView}>
+              <Text style={styles.itemTitle}>
+                {item.author.charAt(0).toUpperCase() + item.author.slice(1)}:
+              </Text>
+            </View>
+
+            <View style={styles.bodyView} >
+              <CustomText caption={item.title} style={styles.itemBody} />
+
+              <CustomText 
+                caption={ item.created_at.slice(11, 19) + ' ' + item.created_at.slice(0, 10) }
+                style={styles.createdAt}
+              />
+
+              <CustomText
+                caption={`Views: ${item.points}`} 
+                style={styles.points}
+              />
+            </View>
           </View>
-
-          <View style={styles.bodyView} >
-            <CustomText caption={item.title} style={styles.itemBody} />
-
-            <CustomText 
-              caption={ item.created_at.slice(11, 19) + ' ' + item.created_at.slice(0, 10) }
-              style={styles.createdAt}
-            />
-
-            <CustomText
-              caption={`Views: ${item.points}`} 
-              style={styles.points}
-            />
-          </View>
-        </View>
-      </TouchableOpacity>
-        
-    )
+        </TouchableOpacity>
+          
+      )
+    }
   }
 
   return (
     <View style={styles.container}>
       
-      <CustomText caption={name} style={styles.header} onPress={() => dispatch(increasePage())} />
+      <CustomText caption={`Welcome back ${name}`} style={styles.header} onPress={() => dispatch(increasePage())} />
 
-      {/* <CustomText caption={page} style={styles.header} /> */}
+      <CustomText caption={`Page ${page}`} style={styles.header} onPress={() => navigation.navigate("Home")}/>
 
-      <CustomText caption={"SINGING"} style={styles.header} onPress={() => navigation.navigate("Home")} />
+      {/* <CustomText caption={"SINGING"} style={styles.header} /> */}
 
       <WhiteButton caption={"Sign out"} style={styles.signoutButton} onPress={() => deleteCategory()}/>
 
@@ -145,6 +149,8 @@ const DashboardScreen = ({ navigation }) => {
           data = {news}
           keyExtractor={(item, itemIndex) => itemIndex}
           ItemSeparatorComponent={ListViewItemSeparator}
+          onEndReachedThreshold={0}
+          onEndReached={() => dispatch(increasePage())}
           refreshControl={
             <RefreshControl
                 refreshing={isRefreshing}
