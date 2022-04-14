@@ -4,7 +4,7 @@ export const GET_NEWS = 'GET_NEWS';
 export const SET_PAGE = 'SET_PAGE';
 export const INCRESE_PAGE = 'INCRESE_PAGE';
 
-const API_URL = `https://hn.algolia.com/api/v1/search_by_date?numericFilters=points%3E250&page=0`
+const API_URL = `https://hn.algolia.com/api/v1/search_by_date?numericFilters=points%3E150&page=0`
 
 export const getNews = () => {
     try {
@@ -16,6 +16,8 @@ export const getNews = () => {
                     type: GET_NEWS,
                     payload: response.data.hits
                 })
+            } else {
+                console.log(`Couldn't get News from the server`)
             }
         }
     } catch (error) {

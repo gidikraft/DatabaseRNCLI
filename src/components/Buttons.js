@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         height: 48,
     },
     buttonCaption: {
-        color: Colors.White,
+        color: Colors.Blue,
         fontSize: 18,
         fontWeight: Constants.bold,
         fontFamily: Fonts.Bold_Fonts,

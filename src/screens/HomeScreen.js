@@ -1,14 +1,14 @@
-import { View, Text, FlatList, Alert, TouchableOpacity } from 'react-native'
+import { View } from 'react-native'
 import React, { useEffect, useState } from 'react';
-import { BlueButton, WhiteButton } from '../components/Buttons';
-import { TaskInput, SecondInput } from '../components/Inputs';
-import { ListViewItemSeparator } from '../components/ItemSeperator';
+import { BlueButton } from '../components/Buttons';
+import { SecondInput } from '../components/Inputs';
 import styles from './screen.styles/HomeScreenStyles';
 import { openDatabase } from 'react-native-sqlite-storage';
 import { CustomText } from '../components/DbText';
 import { Constants } from '../utils';
 import { useSelector, useDispatch } from 'react-redux';
 import { setName } from '../redux/actions';
+import PushNotification from "react-native-push-notification";
 
 const db = openDatabase({
     name: 'rn_sqlite'
@@ -48,7 +48,7 @@ const HomeScreen = ({ navigation }) => {
                 [name],
                 (sqlTx, res) => {
                     console.log(`${name} category added successfully`)
-                    navigation.navigate("Dashboard")
+                    navigation.navigate("TopBarNav")
                 },
                 error => {console.log(`error on adding category` +  error.message);}
             )
@@ -63,7 +63,7 @@ const HomeScreen = ({ navigation }) => {
                 (txSql, res) => {
                     let len = res.rows.length
                     if (len > 0) {
-                        navigation.navigate("Dashboard")
+                        navigation.navigate("TopBarNav")
                     }
                 },
                 error => {
@@ -73,22 +73,21 @@ const HomeScreen = ({ navigation }) => {
         })
     }
 
-    const renderCategory = ({item}) => {
-        return (
-            <TouchableOpacity >
-                <View style={styles.databaseList}>
-                    <Text style={styles.dbNumber}>{item.id}</Text>
-                    <Text style={styles.dbName} >{item.name}</Text>
-                </View>
-            </TouchableOpacity>
-            
-        )
-    }
-
     useEffect(() => {
-        createTables(),
-        getCategories()
+        createTables();
+        getCategories();
+        createNotificationChannel();
     }, [])
+
+    const createNotificationChannel = () => {
+      PushNotification.createChannel(
+        {
+          channelId: "hn-channel",
+          channelName: "HN Channel",
+          channelDescription: "News HackerNews available",
+        }
+      )
+    }
     
     return (
         <View style={styles.container}>
@@ -102,7 +101,7 @@ const HomeScreen = ({ navigation }) => {
             />
 
             <SecondInput 
-                placeholder={Constants.Enter_task}
+                placeholder={Constants.Enter_password}
                 value={password}
                 onChangeText={(text) => setPassword(text)}
                 autoCapitalize={'words'}
@@ -110,20 +109,6 @@ const HomeScreen = ({ navigation }) => {
             />
             <BlueButton style={styles.blueButton} caption={Constants.Submit_Name} onPress={addCategory} />
 
-            {/* <TaskInput 
-                placeholder={Constants.Enter_Id}
-                onChangeText={(text) => setPassword(text)}
-                value={password}
-            /> */}
-
-            {/* <WhiteButton caption={Constants.Delete_Id} onPress={addCategory}/> */}
-
-            {/* <FlatList 
-                data = {data}
-                keyExtractor={(item, itemIndex) => itemIndex}
-                ItemSeparatorComponent={ListViewItemSeparator}
-                renderItem={renderCategory}
-            /> */}
         </View>
     )
 };

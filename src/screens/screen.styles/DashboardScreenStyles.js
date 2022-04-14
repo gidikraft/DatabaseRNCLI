@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: Constants.row,
         paddingVertical: 10,
-        // height: 100,
+        elevation: 5,
     },
     titleView: {
         flex: .3,
@@ -59,6 +59,11 @@ const styles = StyleSheet.create({
         marginRight: 10,
         color: Colors.Red,
 
+    },
+    tinyLogo: {
+        width : "100%",
+        height: 200,
+        marginTop: 10
     }
 })
 

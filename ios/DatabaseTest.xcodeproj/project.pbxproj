@@ -11,24 +11,24 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		9AEEB25D895709C65D03CFCB /* libPods-DatabaseTest-DatabaseTestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 278FA4D35473884A335E4B84 /* libPods-DatabaseTest-DatabaseTestTests.a */; };
-		CDAE3317797125CE38DE1937 /* libPods-DatabaseTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9FAEC6E630BE31DD5F5A159 /* libPods-DatabaseTest.a */; };
 		2E629B958D674C708AFDB4F0 /* SpectralSC-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED16105E912D4EBE8700404E /* SpectralSC-Bold.ttf */; };
-		F680FF1C312842F289D79B12 /* SpectralSC-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19DABA922B69445D85EAA1E1 /* SpectralSC-BoldItalic.ttf */; };
-		BE8CC7D008B545CAB8061648 /* SpectralSC-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21345298485E478C95F6336D /* SpectralSC-ExtraBold.ttf */; };
-		5F9852FEDB9440E89D3D2911 /* SpectralSC-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCFBC176A8A2439F8E739E89 /* SpectralSC-ExtraBoldItalic.ttf */; };
-		3A9A35EB842E4C95A865257C /* SpectralSC-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3DC2A4F1C464049BE9BA212 /* SpectralSC-ExtraLight.ttf */; };
-		D0B5AD958B28470896B826F7 /* SpectralSC-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0A8587A4B6B4B71A9641BB0 /* SpectralSC-ExtraLightItalic.ttf */; };
-		37D852B8EA14477F9DE6E3BA /* SpectralSC-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A5E6A7E696A4F859FA31CB0 /* SpectralSC-Italic.ttf */; };
-		ADB45FBDD7584029928BB55E /* SpectralSC-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9BE019C74794014A3282378 /* SpectralSC-Light.ttf */; };
-		C8E44A53F60C4110A34357DB /* SpectralSC-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C86F305F623441991461E67 /* SpectralSC-LightItalic.ttf */; };
 		3470AF0D82B2426B85A6A1B3 /* SpectralSC-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F9D9D9D9F4E42509F83CE94 /* SpectralSC-Medium.ttf */; };
-		F9F1803F847B41798021ED2B /* SpectralSC-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 840831C95F2E4B7FA872322B /* SpectralSC-MediumItalic.ttf */; };
+		37D852B8EA14477F9DE6E3BA /* SpectralSC-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A5E6A7E696A4F859FA31CB0 /* SpectralSC-Italic.ttf */; };
+		3A9A35EB842E4C95A865257C /* SpectralSC-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3DC2A4F1C464049BE9BA212 /* SpectralSC-ExtraLight.ttf */; };
 		4E653F8B65E841B1B58F1D66 /* SpectralSC-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26F1CC9C84B94A7BA1CB83B0 /* SpectralSC-Regular.ttf */; };
-		F8E284ABF4FE4FA9AD002745 /* SpectralSC-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0CB321352BA49C2AF822941 /* SpectralSC-SemiBold.ttf */; };
 		5BF8EB6B70734A8594F337E4 /* SpectralSC-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 76128D2BD07C450E87FE1E3D /* SpectralSC-SemiBoldItalic.ttf */; };
+		5F9852FEDB9440E89D3D2911 /* SpectralSC-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCFBC176A8A2439F8E739E89 /* SpectralSC-ExtraBoldItalic.ttf */; };
+		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		955AE1AB082A43B4A1FC507C /* LobsterTwo-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55C5C4E2140142EEA8555CDE /* LobsterTwo-Italic.ttf */; };
+		9AEEB25D895709C65D03CFCB /* libPods-DatabaseTest-DatabaseTestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 278FA4D35473884A335E4B84 /* libPods-DatabaseTest-DatabaseTestTests.a */; };
+		ADB45FBDD7584029928BB55E /* SpectralSC-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9BE019C74794014A3282378 /* SpectralSC-Light.ttf */; };
+		BE8CC7D008B545CAB8061648 /* SpectralSC-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21345298485E478C95F6336D /* SpectralSC-ExtraBold.ttf */; };
+		C8E44A53F60C4110A34357DB /* SpectralSC-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C86F305F623441991461E67 /* SpectralSC-LightItalic.ttf */; };
+		CDAE3317797125CE38DE1937 /* libPods-DatabaseTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9FAEC6E630BE31DD5F5A159 /* libPods-DatabaseTest.a */; };
+		D0B5AD958B28470896B826F7 /* SpectralSC-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0A8587A4B6B4B71A9641BB0 /* SpectralSC-ExtraLightItalic.ttf */; };
+		F680FF1C312842F289D79B12 /* SpectralSC-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19DABA922B69445D85EAA1E1 /* SpectralSC-BoldItalic.ttf */; };
+		F8E284ABF4FE4FA9AD002745 /* SpectralSC-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A0CB321352BA49C2AF822941 /* SpectralSC-SemiBold.ttf */; };
+		F9F1803F847B41798021ED2B /* SpectralSC-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 840831C95F2E4B7FA872322B /* SpectralSC-MediumItalic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,35 +45,35 @@
 		00E356EE1AD99517003FC87E /* DatabaseTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DatabaseTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* DatabaseTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DatabaseTestTests.m; sourceTree = "<group>"; };
+		0C86F305F623441991461E67 /* SpectralSC-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SpectralSC-LightItalic.ttf"; path = "../assets/fonts/SpectralSC-LightItalic.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* DatabaseTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DatabaseTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = DatabaseTest/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = DatabaseTest/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = DatabaseTest/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = DatabaseTest/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = DatabaseTest/main.m; sourceTree = "<group>"; };
+		19DABA922B69445D85EAA1E1 /* SpectralSC-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SpectralSC-BoldItalic.ttf"; path = "../assets/fonts/SpectralSC-BoldItalic.ttf"; sourceTree = "<group>"; };
+		21345298485E478C95F6336D /* SpectralSC-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SpectralSC-ExtraBold.ttf"; path = "../assets/fonts/SpectralSC-ExtraBold.ttf"; sourceTree = "<group>"; };
+		26F1CC9C84B94A7BA1CB83B0 /* SpectralSC-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SpectralSC-Regular.ttf"; path = "../assets/fonts/SpectralSC-Regular.ttf"; sourceTree = "<group>"; };
 		278FA4D35473884A335E4B84 /* libPods-DatabaseTest-DatabaseTestTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DatabaseTest-DatabaseTestTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F9D9D9D9F4E42509F83CE94 /* SpectralSC-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SpectralSC-Medium.ttf"; path = "../assets/fonts/SpectralSC-Medium.ttf"; sourceTree = "<group>"; };
+		55C5C4E2140142EEA8555CDE /* LobsterTwo-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "LobsterTwo-Italic.ttf"; path = "../assets/fonts/LobsterTwo-Italic.ttf"; sourceTree = "<group>"; };
 		5A4BA17224C6BBA2449E9D31 /* Pods-DatabaseTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatabaseTest.debug.xcconfig"; path = "Target Support Files/Pods-DatabaseTest/Pods-DatabaseTest.debug.xcconfig"; sourceTree = "<group>"; };
 		5FD5072A65E02181B6A51FC7 /* Pods-DatabaseTest-DatabaseTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatabaseTest-DatabaseTestTests.debug.xcconfig"; path = "Target Support Files/Pods-DatabaseTest-DatabaseTestTests/Pods-DatabaseTest-DatabaseTestTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6A5E6A7E696A4F859FA31CB0 /* SpectralSC-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SpectralSC-Italic.ttf"; path = "../assets/fonts/SpectralSC-Italic.ttf"; sourceTree = "<group>"; };
+		76128D2BD07C450E87FE1E3D /* SpectralSC-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SpectralSC-SemiBoldItalic.ttf"; path = "../assets/fonts/SpectralSC-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = DatabaseTest/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		840831C95F2E4B7FA872322B /* SpectralSC-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SpectralSC-MediumItalic.ttf"; path = "../assets/fonts/SpectralSC-MediumItalic.ttf"; sourceTree = "<group>"; };
 		9C1F15B2BE7212DA09DC5251 /* Pods-DatabaseTest-DatabaseTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatabaseTest-DatabaseTestTests.release.xcconfig"; path = "Target Support Files/Pods-DatabaseTest-DatabaseTestTests/Pods-DatabaseTest-DatabaseTestTests.release.xcconfig"; sourceTree = "<group>"; };
+		A0CB321352BA49C2AF822941 /* SpectralSC-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SpectralSC-SemiBold.ttf"; path = "../assets/fonts/SpectralSC-SemiBold.ttf"; sourceTree = "<group>"; };
+		D3DC2A4F1C464049BE9BA212 /* SpectralSC-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SpectralSC-ExtraLight.ttf"; path = "../assets/fonts/SpectralSC-ExtraLight.ttf"; sourceTree = "<group>"; };
 		D9FAEC6E630BE31DD5F5A159 /* libPods-DatabaseTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DatabaseTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E06232D9AD8F7E72360BCC52 /* Pods-DatabaseTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DatabaseTest.release.xcconfig"; path = "Target Support Files/Pods-DatabaseTest/Pods-DatabaseTest.release.xcconfig"; sourceTree = "<group>"; };
+		E0A8587A4B6B4B71A9641BB0 /* SpectralSC-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SpectralSC-ExtraLightItalic.ttf"; path = "../assets/fonts/SpectralSC-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		E9BE019C74794014A3282378 /* SpectralSC-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SpectralSC-Light.ttf"; path = "../assets/fonts/SpectralSC-Light.ttf"; sourceTree = "<group>"; };
+		ED16105E912D4EBE8700404E /* SpectralSC-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SpectralSC-Bold.ttf"; path = "../assets/fonts/SpectralSC-Bold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		ED16105E912D4EBE8700404E /* SpectralSC-Bold.ttf */ = {isa = PBXFileReference; name = "SpectralSC-Bold.ttf"; path = "../assets/fonts/SpectralSC-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		19DABA922B69445D85EAA1E1 /* SpectralSC-BoldItalic.ttf */ = {isa = PBXFileReference; name = "SpectralSC-BoldItalic.ttf"; path = "../assets/fonts/SpectralSC-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		21345298485E478C95F6336D /* SpectralSC-ExtraBold.ttf */ = {isa = PBXFileReference; name = "SpectralSC-ExtraBold.ttf"; path = "../assets/fonts/SpectralSC-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		FCFBC176A8A2439F8E739E89 /* SpectralSC-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; name = "SpectralSC-ExtraBoldItalic.ttf"; path = "../assets/fonts/SpectralSC-ExtraBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		D3DC2A4F1C464049BE9BA212 /* SpectralSC-ExtraLight.ttf */ = {isa = PBXFileReference; name = "SpectralSC-ExtraLight.ttf"; path = "../assets/fonts/SpectralSC-ExtraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		E0A8587A4B6B4B71A9641BB0 /* SpectralSC-ExtraLightItalic.ttf */ = {isa = PBXFileReference; name = "SpectralSC-ExtraLightItalic.ttf"; path = "../assets/fonts/SpectralSC-ExtraLightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		6A5E6A7E696A4F859FA31CB0 /* SpectralSC-Italic.ttf */ = {isa = PBXFileReference; name = "SpectralSC-Italic.ttf"; path = "../assets/fonts/SpectralSC-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		E9BE019C74794014A3282378 /* SpectralSC-Light.ttf */ = {isa = PBXFileReference; name = "SpectralSC-Light.ttf"; path = "../assets/fonts/SpectralSC-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		0C86F305F623441991461E67 /* SpectralSC-LightItalic.ttf */ = {isa = PBXFileReference; name = "SpectralSC-LightItalic.ttf"; path = "../assets/fonts/SpectralSC-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		3F9D9D9D9F4E42509F83CE94 /* SpectralSC-Medium.ttf */ = {isa = PBXFileReference; name = "SpectralSC-Medium.ttf"; path = "../assets/fonts/SpectralSC-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		840831C95F2E4B7FA872322B /* SpectralSC-MediumItalic.ttf */ = {isa = PBXFileReference; name = "SpectralSC-MediumItalic.ttf"; path = "../assets/fonts/SpectralSC-MediumItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		26F1CC9C84B94A7BA1CB83B0 /* SpectralSC-Regular.ttf */ = {isa = PBXFileReference; name = "SpectralSC-Regular.ttf"; path = "../assets/fonts/SpectralSC-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		A0CB321352BA49C2AF822941 /* SpectralSC-SemiBold.ttf */ = {isa = PBXFileReference; name = "SpectralSC-SemiBold.ttf"; path = "../assets/fonts/SpectralSC-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		76128D2BD07C450E87FE1E3D /* SpectralSC-SemiBoldItalic.ttf */ = {isa = PBXFileReference; name = "SpectralSC-SemiBoldItalic.ttf"; path = "../assets/fonts/SpectralSC-SemiBoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		55C5C4E2140142EEA8555CDE /* LobsterTwo-Italic.ttf */ = {isa = PBXFileReference; name = "LobsterTwo-Italic.ttf"; path = "../assets/fonts/LobsterTwo-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FCFBC176A8A2439F8E739E89 /* SpectralSC-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SpectralSC-ExtraBoldItalic.ttf"; path = "../assets/fonts/SpectralSC-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +136,29 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5DCD4F130A8048A3983A6966 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ED16105E912D4EBE8700404E /* SpectralSC-Bold.ttf */,
+				19DABA922B69445D85EAA1E1 /* SpectralSC-BoldItalic.ttf */,
+				21345298485E478C95F6336D /* SpectralSC-ExtraBold.ttf */,
+				FCFBC176A8A2439F8E739E89 /* SpectralSC-ExtraBoldItalic.ttf */,
+				D3DC2A4F1C464049BE9BA212 /* SpectralSC-ExtraLight.ttf */,
+				E0A8587A4B6B4B71A9641BB0 /* SpectralSC-ExtraLightItalic.ttf */,
+				6A5E6A7E696A4F859FA31CB0 /* SpectralSC-Italic.ttf */,
+				E9BE019C74794014A3282378 /* SpectralSC-Light.ttf */,
+				0C86F305F623441991461E67 /* SpectralSC-LightItalic.ttf */,
+				3F9D9D9D9F4E42509F83CE94 /* SpectralSC-Medium.ttf */,
+				840831C95F2E4B7FA872322B /* SpectralSC-MediumItalic.ttf */,
+				26F1CC9C84B94A7BA1CB83B0 /* SpectralSC-Regular.ttf */,
+				A0CB321352BA49C2AF822941 /* SpectralSC-SemiBold.ttf */,
+				76128D2BD07C450E87FE1E3D /* SpectralSC-SemiBoldItalic.ttf */,
+				55C5C4E2140142EEA8555CDE /* LobsterTwo-Italic.ttf */,
+			);
+			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,29 +202,6 @@
 			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
-		};
-		5DCD4F130A8048A3983A6966 /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-				ED16105E912D4EBE8700404E /* SpectralSC-Bold.ttf */,
-				19DABA922B69445D85EAA1E1 /* SpectralSC-BoldItalic.ttf */,
-				21345298485E478C95F6336D /* SpectralSC-ExtraBold.ttf */,
-				FCFBC176A8A2439F8E739E89 /* SpectralSC-ExtraBoldItalic.ttf */,
-				D3DC2A4F1C464049BE9BA212 /* SpectralSC-ExtraLight.ttf */,
-				E0A8587A4B6B4B71A9641BB0 /* SpectralSC-ExtraLightItalic.ttf */,
-				6A5E6A7E696A4F859FA31CB0 /* SpectralSC-Italic.ttf */,
-				E9BE019C74794014A3282378 /* SpectralSC-Light.ttf */,
-				0C86F305F623441991461E67 /* SpectralSC-LightItalic.ttf */,
-				3F9D9D9D9F4E42509F83CE94 /* SpectralSC-Medium.ttf */,
-				840831C95F2E4B7FA872322B /* SpectralSC-MediumItalic.ttf */,
-				26F1CC9C84B94A7BA1CB83B0 /* SpectralSC-Regular.ttf */,
-				A0CB321352BA49C2AF822941 /* SpectralSC-SemiBold.ttf */,
-				76128D2BD07C450E87FE1E3D /* SpectralSC-SemiBoldItalic.ttf */,
-				55C5C4E2140142EEA8555CDE /* LobsterTwo-Italic.ttf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 

@@ -1,4 +1,5 @@
-import { View, Text, Alert, FlatList, TouchableOpacity, Linking, RefreshControl, ActivityIndicator } from 'react-native'
+import axios from 'axios';
+import { View, Text, Alert, FlatList, TouchableOpacity, Linking, RefreshControl, ActivityIndicator, Image } from 'react-native'
 import React, { useEffect, useState, useCallback } from 'react'
 import { openDatabase } from 'react-native-sqlite-storage';
 import { CustomText } from '../components/DbText';
@@ -8,7 +9,7 @@ import { setName, getNews, increasePage } from '../redux/actions';
 import { useSelector, useDispatch } from 'react-redux';
 import { ListViewItemSeparator } from '../components/ItemSeperator';
 import { TaskInput } from '../components/Inputs';
-
+import PushNotification from "react-native-push-notification";
 
 const db = openDatabase({
   name: 'rn_sqlite'
@@ -16,13 +17,19 @@ const db = openDatabase({
 
 const DashboardScreen = ({ navigation }) => {
 
+  const [newsArticle, setNewsArticle] = useState();
+  // const [page, setPage] = useState(0);
+  const [searchInput, setSearchInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [newsPage, setNewsPage] = useState(1);
+
   const { name, news, page } = useSelector(state => state.userReducer);
   const dispatch = useDispatch();
 
-  const [data, setData] = useState('');
-  // const [page, setPage] = useState(0);
-  const [searchInput, setSearchInput] = useState('');
-  const [isRefreshing, setIsRefreshing] = useState(false);
+  const API_KEY = `9f80026d02654659b63626deb0dfb4bc`
+  const NEWS_API = `https://newsapi.org/v2/top-headlines?country=ng&apiKey=${API_KEY}`
+  // const NEWS_API = `https://newsapi.org/v2/everything?q=uefa&from=2022-04-06&sortBy=publishedAt&apiKey=${API_KEY}`
 
   //fetch user details from db
   const fetchData = () => {
@@ -72,50 +79,78 @@ const DashboardScreen = ({ navigation }) => {
               { cancelable: false }
             );
           } else {
-              alert('Please insert a valid User Id');
+              alert('You are not signed in');
           }
         }
       );
     });
   };
 
+  const getNews = async () => {
+    const response = await axios.get(NEWS_API)
+      console.log(response)
+      setIsLoading(true)
+      if (response.status ===  200) {
+        console.log(response.data.articles)
+        setNewsArticle(response.data.articles)
+        setIsLoading(false)
+      }
+  };
+
   useEffect(() => {
     fetchData()
-    dispatch(getNews())
+    getNews()
+    // dispatch(getNews())
   }, [])
 
   const wait = (timeout) => new Promise(resolve => setTimeout(resolve, timeout));
 
   const pullToRefresh = useCallback(() => {
     setIsRefreshing(true);
-    dispatch(getNews())
+    // dispatch(getNews())
     // wait(2000).then(() => setIsRefreshing(false));
     setIsRefreshing(false)
   }, []);
+
+  const handleNotification = item => {
+    PushNotification.localNotification({
+      channelId: "hn-channel",
+      title: `You clicked on ${item}`,
+      message: item.body
+    })
+  }
+
+  const handleNewsTouch = (item) => Linking.openURL(item.url)
 
   const renderCategory = ({item}) => {
     if(item.title.toLowerCase().includes(searchInput.toLowerCase().trim())
       || item.author.toLowerCase().includes(searchInput.toLowerCase().trim())) {
       return (
-        <TouchableOpacity onPress={() => Linking.openURL(item.url)}>
+        <TouchableOpacity onPress={() => handleNotification(item)}>
+          
+          <Image
+            style={styles.tinyLogo}
+            resizeMode="cover"
+            source={{uri: item.urlToImage}}
+          />
           <View style={styles.databaseList}>
 
             <View style={styles.titleView}>
               <Text style={styles.itemTitle}>
-                {item.author.charAt(0).toUpperCase() + item.author.slice(1)}:
+                {item.author}:
               </Text>
             </View>
 
             <View style={styles.bodyView} >
-              <CustomText caption={item.title} style={styles.itemBody} />
+              <CustomText caption={item.description} style={styles.itemBody} />
 
               <CustomText 
-                caption={ item.created_at.slice(11, 19) + ' ' + item.created_at.slice(0, 10) }
+                caption={ item.publishedAt.slice(11, 19) + ' ' + item.publishedAt.slice(0, 10) }
                 style={styles.createdAt}
               />
 
               <CustomText
-                caption={`Views: ${item.points}`} 
+                caption={`Source: ${item.source.name}`} 
                 style={styles.points}
               />
             </View>
@@ -131,7 +166,7 @@ const DashboardScreen = ({ navigation }) => {
       
       <CustomText caption={`Welcome back ${name}`} style={styles.header} onPress={() => dispatch(increasePage())} />
 
-      <CustomText caption={`Page ${page}`} style={styles.header} onPress={() => navigation.navigate("Home")}/>
+      {/* <CustomText caption={`Page ${page}`} style={styles.header} onPress={() => navigation.navigate("Home")}/> */}
 
       {/* <CustomText caption={"SINGING"} style={styles.header} /> */}
 
@@ -146,11 +181,11 @@ const DashboardScreen = ({ navigation }) => {
 
       {news? (
         <FlatList 
-          data = {news}
+          data = {newsArticle}
           keyExtractor={(item, itemIndex) => itemIndex}
           ItemSeparatorComponent={ListViewItemSeparator}
-          onEndReachedThreshold={0}
-          onEndReached={() => dispatch(increasePage())}
+          // onEndReachedThreshold={0.3}
+          // onEndReached={() => setNewsPage(newsPage+1)}
           refreshControl={
             <RefreshControl
                 refreshing={isRefreshing}
