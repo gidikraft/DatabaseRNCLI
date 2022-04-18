@@ -2,14 +2,15 @@ import axios from 'axios';
 export const SET_USER_NAME = 'SET_USER_NAME';
 export const GET_NEWS = 'GET_NEWS';
 export const SET_PAGE = 'SET_PAGE';
+export const SET_PASSWORD = 'SET_PAGE';
 export const INCRESE_PAGE = 'INCRESE_PAGE';
 
-const API_URL = `https://hn.algolia.com/api/v1/search_by_date?numericFilters=points%3E150&page=0`
+const HACKER_NEWS_URL = `https://hn.algolia.com/api/v1/search_by_date?numericFilters=points%3E150&page=0`
 
 export const getNews = () => {
     try {
         return async dispatch => {
-            const response = await axios.get(API_URL)
+            const response = await axios.get(HACKER_NEWS_URL)
 
             if (response.status === 200) {
                 dispatch({
@@ -45,3 +46,10 @@ export const increasePage = page => dispatch =>  {
         payload: page,
     })
 };
+
+export const setPassword = password => dispatch =>  {
+    dispatch({
+        type: SET_PASSWORD,
+        payload: password,
+    })
+}

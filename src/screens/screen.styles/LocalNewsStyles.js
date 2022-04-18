@@ -6,9 +6,10 @@ const { deviceHeight, deviceWidth } = Dimensions.get("window")
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 10,
+        padding: 5,
         height: deviceHeight,
         width: deviceWidth,
+        backgroundColor: Colors.White
     },
     headerView: {
         flexDirection: Constants.row,
@@ -22,17 +23,18 @@ const styles = StyleSheet.create({
     logoutIcon: {
         tintColor: Colors.Green,
     },
-    logoutView: {
-        alignItems: Constants.center,
-        flexDirection: Constants.row,
-        alignSelf: Constants.center,
-    },
-
-    databaseList: {
-        flex: 1,
-        flexDirection: Constants.row,
-        paddingVertical: 10,
+    newsContainer: {
         elevation: 5,
+        backgroundColor: Colors.White,
+        // borderWidth: 1,
+        // borderColor: Colors.Blue,
+        margin: 5,
+        borderRadius: 5      
+    },
+    databaseList: {
+        // flex: 1,
+        flexDirection: Constants.row,
+        padding: 5,
     },
     titleView: {
         flex: .3,
@@ -72,8 +74,12 @@ const styles = StyleSheet.create({
     tinyLogo: {
         width : "100%",
         height: 200,
-        marginTop: 10
-    }
-})
+        borderTopLeftRadius: 5,
+        borderTopRightRadius: 5,
+        // marginTop: 10
+    },
 
-export default styles
+      
+});
+
+export default styles;

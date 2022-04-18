@@ -7,7 +7,11 @@ const Constants = {
     Enter_password: "Enter password",
     Delete_Id: "Enter id",
     Enter_Id: "Enter password",
-    Submit_Name: "Login"
+    Submit_Name: "Login",
+    large: "large",
+    clickToSearch: "Click here to search",
+    search: "search",
+    welcome: "welcome"
 }
 
 const Colors = {

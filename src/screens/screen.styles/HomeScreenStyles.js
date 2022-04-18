@@ -14,6 +14,11 @@ const styles = StyleSheet.create({
         textAlign: Constants.center,
         marginTop: 20
     },
+    errorMessage: {
+        marginTop: 30,
+        textAlign: Constants.center,
+        color: Colors.Red
+    },
     blueButton: {
         marginVertical: 20,
         backgroundColor: Colors.Green,
