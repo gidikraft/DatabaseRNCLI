@@ -6,6 +6,7 @@ import HomeScreen from '../screens/HomeScreen';
 import DashboardScreen from '../screens/DashboardScreen';
 import LocalNews from '../screens/LocalNews';
 import { Colors, Fonts } from '../utils';
+import Technews from '../screens/Technews';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -31,6 +32,7 @@ const TopBarNavigation = () => {
             {/* <Tab.Screen name="Home" component={HomeScreen} /> */}
             <Tab.Screen name="Dashboard" component={DashboardScreen} />
             <Tab.Screen name="LocalNews" component={LocalNews} />
+            <Tab.Screen name="TechNews" component={Technews} />
         </Tab.Navigator>
 
     // </NavigationContainer>

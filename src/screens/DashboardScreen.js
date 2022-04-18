@@ -78,7 +78,6 @@ const DashboardScreen = ({ navigation }) => {
       const response = await axios.get(NEWS_API)
         setIsLoading(!isLoading)
         if (response.status ===  200) {
-          console.log(response.data.articles)
           setNewsArticle(response.data.articles)
           setIsLoading(isLoading)
         }
@@ -106,7 +105,7 @@ const DashboardScreen = ({ navigation }) => {
 
   const handleNewsTouch = item => Linking.openURL(item.url)
 
-  const renderCategory = ({item}) => {
+  const renderNews = ({item}) => {
     if(item.description.toLowerCase().includes(searchInput.toLowerCase().trim())
       || item.content.toLowerCase().includes(searchInput.toLowerCase().trim())) {
       return (
@@ -151,7 +150,8 @@ const DashboardScreen = ({ navigation }) => {
       <View style={styles.headerView} >
         <CustomText caption={`${Constants.welcome} ${username}`} style={styles.header} onPress={() =>  navigation.navigate('Home')} />
 
-        <TouchableOpacity onPress={() => signoutDb()} >
+        <TouchableOpacity style={styles.logoutView} onPress={() => signoutDb()} >
+          <CustomText caption={"Log out"}/>
           <Image source={LogoutIcon} style={styles.logoutIcon} />
         </TouchableOpacity>
 
@@ -178,7 +178,7 @@ const DashboardScreen = ({ navigation }) => {
               tintColor={Colors.Green}
             />
           }
-          renderItem={renderCategory}
+          renderItem={renderNews}
         /> ) : (
           <ActivityIndicator 
             animating={true} 

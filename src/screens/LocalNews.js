@@ -26,7 +26,6 @@ const LocalNews = ({ navigation }) => {
         setIsLoading(true)
   
         if (response.status ===  200) {
-          // console.log(response.data.articles)
           setLocalNewsArticle(response.data.articles)
           setIsLoading(!isLoading)
         }
