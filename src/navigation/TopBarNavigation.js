@@ -5,13 +5,29 @@ import { NavigationContainer } from '@react-navigation/native';
 import HomeScreen from '../screens/HomeScreen';
 import DashboardScreen from '../screens/DashboardScreen';
 import LocalNews from '../screens/LocalNews';
+import { Colors, Fonts } from '../utils';
 
 const Tab = createMaterialTopTabNavigator();
 
 const TopBarNavigation = () => {
   return (
     // <NavigationContainer>
-        <Tab.Navigator>
+        <Tab.Navigator
+          screenOptions={{
+            tabBarActiveTintColor: 'yellow',
+            tabBarInactiveTintColor: '#F1F1F1',
+            activeBackgroundColor: '#CE4418',
+            inactiveBackgroundColor: '#b55031',
+              tabBarStyle: {
+                backgroundColor: Colors.Green,
+                paddingBottom: 3
+              },
+              tabBarLabelStyle: {
+                fontSize: 14,
+                fontFamily: Fonts.Bold_Italic_Font,
+              },
+          }}
+        >
             {/* <Tab.Screen name="Home" component={HomeScreen} /> */}
             <Tab.Screen name="Dashboard" component={DashboardScreen} />
             <Tab.Screen name="LocalNews" component={LocalNews} />

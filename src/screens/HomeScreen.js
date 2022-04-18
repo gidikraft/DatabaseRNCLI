@@ -1,4 +1,4 @@
-import { View } from 'react-native'
+import { View, ToastAndroid } from 'react-native'
 import React, { useEffect, useState } from 'react';
 import { BlueButton } from '../components/Buttons';
 import { SecondInput } from '../components/Inputs';
@@ -7,24 +7,23 @@ import { openDatabase } from 'react-native-sqlite-storage';
 import { CustomText } from '../components/DbText';
 import { Constants } from '../utils';
 import { useSelector, useDispatch } from 'react-redux';
-import { setName } from '../redux/actions';
-import PushNotification from "react-native-push-notification";
+import { setName, setPassword } from '../redux/actions';
 
 const db = openDatabase({
-    name: 'rn_sqlite'
+    name: 'news_sqlite'
 })
 
 const HomeScreen = ({ navigation }) => {
     // const [name, setName] = useState("")
-    const [password, setPassword] = useState("")
+    const [errorMessage, setErrorMessage] = useState(false)
 
-    const { name } = useSelector(state => state.userReducer);
+    const { name, password } = useSelector(state => state.userReducer);
     const dispatch = useDispatch();
 
     const createTables = () => {
         db.transaction(tx => {
             tx.executeSql(
-                `CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)`,
+                `CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, password TEXT)`,
                 [],
                 (sqlTx, res) => {
                     console.log('table created successfully')
@@ -36,21 +35,35 @@ const HomeScreen = ({ navigation }) => {
         })
     }
 
-    const addCategory = () => {
-        if (!name) {
-            alert("Enter Category")
-            return false
+    const validateInput = () => {
+        if (name.trim() === "" || password.trim() === "") {
+            ToastAndroid.show("Invalid username/password", ToastAndroid.LONG);
+            setErrorMessage(true)
+        } else {
+            addCategory()
         }
-        
+    };
+  
+    const handleUsernameChange = (username) => {
+        setErrorMessage(false)
+        dispatch(setName(username))
+    }
+
+    const handlePasswordChange = (userPassword) => {
+        setErrorMessage(false)
+        dispatch(setPassword(userPassword))
+    }
+
+    const addCategory = () => {
         db.transaction(tx => {
             tx.executeSql(
-                `INSERT INTO items (name) VALUES (?)`,
-                [name],
+                `INSERT INTO items (name, password) VALUES (?, ?)`,
+                [name, password],
                 (sqlTx, res) => {
-                    console.log(`${name} category added successfully`)
+                    console.log(`name:${name} password:${password} added successfully`)
                     navigation.navigate("TopBarNav")
                 },
-                error => {console.log(`error on adding category` +  error.message);}
+                error => {console.log(`error on logging in` +  error.message);}
             )
         })
     };
@@ -76,26 +89,20 @@ const HomeScreen = ({ navigation }) => {
     useEffect(() => {
         createTables();
         getCategories();
-        createNotificationChannel();
     }, [])
-
-    const createNotificationChannel = () => {
-      PushNotification.createChannel(
-        {
-          channelId: "hn-channel",
-          channelName: "HN Channel",
-          channelDescription: "News HackerNews available",
-        }
-      )
-    }
     
     return (
         <View style={styles.container}>
             <CustomText style={styles.header} caption={"HomeScreen"} onPress={() => navigation.navigate("Dashboard")}/>
+
+            {errorMessage? (
+                <CustomText caption={"Invalid username/password"} style={styles.errorMessage} />
+            ) : null}
+
             <SecondInput 
                 placeholder={Constants.Enter_task}
                 value={name}
-                onChangeText={(text) => dispatch(setName(text))}
+                onChangeText={(nameText) => handleUsernameChange(nameText)}
                 autoCapitalize={'words'}
                 style={styles.taskInput}
             />
@@ -103,15 +110,14 @@ const HomeScreen = ({ navigation }) => {
             <SecondInput 
                 placeholder={Constants.Enter_password}
                 value={password}
-                onChangeText={(text) => setPassword(text)}
-                autoCapitalize={'words'}
+                onChangeText={(passwordText) => handlePasswordChange(passwordText)}
+                autoCapitalize={'none'}
                 style={styles.taskInput}
             />
-            <BlueButton style={styles.blueButton} caption={Constants.Submit_Name} onPress={addCategory} />
+            <BlueButton style={styles.blueButton} caption={Constants.Submit_Name} onPress={validateInput} />
 
         </View>
     )
 };
 
-
-export default HomeScreen
+export default HomeScreen;

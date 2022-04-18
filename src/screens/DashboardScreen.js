@@ -1,35 +1,33 @@
 import axios from 'axios';
-import { View, Text, Alert, FlatList, TouchableOpacity, Linking, RefreshControl, ActivityIndicator, Image } from 'react-native'
+import { 
+  View, Text, ToastAndroid, FlatList, TouchableOpacity, Linking, RefreshControl, ActivityIndicator, Image 
+} from 'react-native'
 import React, { useEffect, useState, useCallback } from 'react'
 import { openDatabase } from 'react-native-sqlite-storage';
 import { CustomText } from '../components/DbText';
-import { WhiteButton } from '../components/Buttons';
 import styles from './screen.styles/DashboardScreenStyles'
-import { setName, getNews, increasePage } from '../redux/actions';
-import { useSelector, useDispatch } from 'react-redux';
 import { ListViewItemSeparator } from '../components/ItemSeperator';
 import { TaskInput } from '../components/Inputs';
-import PushNotification from "react-native-push-notification";
+import LogoutIcon from  '../../assets/images/logout.png'
+import { Colors, Constants } from '../utils';
 
 const db = openDatabase({
-  name: 'rn_sqlite'
+  name: 'news_sqlite'
 })
 
 const DashboardScreen = ({ navigation }) => {
 
-  const [newsArticle, setNewsArticle] = useState();
-  // const [page, setPage] = useState(0);
+  const [newsArticle, setNewsArticle] = useState([]);
+  const [username, setUsername] = useState("username");
   const [searchInput, setSearchInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [newsPage, setNewsPage] = useState(1);
+  const [error, setError] = useState("")
 
-  const { name, news, page } = useSelector(state => state.userReducer);
-  const dispatch = useDispatch();
-
+  const today = new Date()
   const API_KEY = `9f80026d02654659b63626deb0dfb4bc`
-  const NEWS_API = `https://newsapi.org/v2/top-headlines?country=ng&apiKey=${API_KEY}`
-  // const NEWS_API = `https://newsapi.org/v2/everything?q=uefa&from=2022-04-06&sortBy=publishedAt&apiKey=${API_KEY}`
+  const NEWS_API = `https://newsapi.org/v2/everything?q=ukraine&from=${today}&sortBy=publishedAt&apiKey=${API_KEY}&page=${newsPage}`
 
   //fetch user details from db
   const fetchData = () => {
@@ -43,12 +41,9 @@ const DashboardScreen = ({ navigation }) => {
             if (len > 0) {
               len = res.rows.length-1
 
-              var userName = res.rows.item(len).name
-              // var userAge = result.rows.item(len).count
-              
-              setName(userName)
-              
-              // console.log(userName)
+              let userName = res.rows.item(len).name
+              // let password = result.rows.item(len).password
+              setUsername(userName)
             }
           }
         ) 
@@ -59,7 +54,7 @@ const DashboardScreen = ({ navigation }) => {
   }
 
   //deletes all details from db
-  const deleteCategory = () => {
+  const signoutDb = () => {
     db.transaction((tx) => {
       tx.executeSql(
         'DELETE FROM items',
@@ -67,17 +62,8 @@ const DashboardScreen = ({ navigation }) => {
         (tx, res) => {
           console.log('Results', res.rowsAffected + res);
           if (res.rowsAffected > 0) {
-            Alert.alert(
-              'Success',
-              'Logout successful',
-              [
-                {
-                text: 'Ok',
-                onPress: () => navigation.navigate('Home'),
-                },
-              ],
-              { cancelable: false }
-            );
+            ToastAndroid.show("Logout successful", ToastAndroid.SHORT);
+            navigation.navigate('Home')
           } else {
               alert('You are not signed in');
           }
@@ -86,47 +72,45 @@ const DashboardScreen = ({ navigation }) => {
     });
   };
 
+  //get breaking news about Ukraine
   const getNews = async () => {
-    const response = await axios.get(NEWS_API)
-      console.log(response)
-      setIsLoading(true)
-      if (response.status ===  200) {
-        console.log(response.data.articles)
-        setNewsArticle(response.data.articles)
-        setIsLoading(false)
-      }
+    try {
+      const response = await axios.get(NEWS_API)
+        setIsLoading(!isLoading)
+        if (response.status ===  200) {
+          console.log(response.data.articles)
+          setNewsArticle(response.data.articles)
+          setIsLoading(isLoading)
+        }
+      
+    } catch (error) {
+      console.log(error)
+      setError(error)
+    }
   };
 
   useEffect(() => {
     fetchData()
     getNews()
     // dispatch(getNews())
-  }, [])
+  }, [newsPage])
 
   const wait = (timeout) => new Promise(resolve => setTimeout(resolve, timeout));
 
   const pullToRefresh = useCallback(() => {
     setIsRefreshing(true);
-    // dispatch(getNews())
+    getNews()
     // wait(2000).then(() => setIsRefreshing(false));
     setIsRefreshing(false)
   }, []);
 
-  const handleNotification = item => {
-    PushNotification.localNotification({
-      channelId: "hn-channel",
-      title: `You clicked on ${item}`,
-      message: item.body
-    })
-  }
-
-  const handleNewsTouch = (item) => Linking.openURL(item.url)
+  const handleNewsTouch = item => Linking.openURL(item.url)
 
   const renderCategory = ({item}) => {
-    if(item.title.toLowerCase().includes(searchInput.toLowerCase().trim())
-      || item.author.toLowerCase().includes(searchInput.toLowerCase().trim())) {
+    if(item.description.toLowerCase().includes(searchInput.toLowerCase().trim())
+      || item.content.toLowerCase().includes(searchInput.toLowerCase().trim())) {
       return (
-        <TouchableOpacity onPress={() => handleNotification(item)}>
+        <TouchableOpacity onPress={() => handleNewsTouch}>
           
           <Image
             style={styles.tinyLogo}
@@ -159,52 +143,53 @@ const DashboardScreen = ({ navigation }) => {
           
       )
     }
-  }
+  };
 
   return (
     <View style={styles.container}>
       
-      <CustomText caption={`Welcome back ${name}`} style={styles.header} onPress={() => dispatch(increasePage())} />
+      <View style={styles.headerView} >
+        <CustomText caption={`${Constants.welcome} ${username}`} style={styles.header} onPress={() =>  navigation.navigate('Home')} />
 
-      {/* <CustomText caption={`Page ${page}`} style={styles.header} onPress={() => navigation.navigate("Home")}/> */}
+        <TouchableOpacity onPress={() => signoutDb()} >
+          <Image source={LogoutIcon} style={styles.logoutIcon} />
+        </TouchableOpacity>
 
-      {/* <CustomText caption={"SINGING"} style={styles.header} /> */}
-
-      <WhiteButton caption={"Sign out"} style={styles.signoutButton} onPress={() => deleteCategory()}/>
+      </View>
 
       <TaskInput
-        placeholder={"Click here to search"}
+        placeholder={Constants.clickToSearch}
         value={searchInput}
         onChangeText={text => setSearchInput(text)}
-        returnKeyLabel={"Search"}
+        returnKeyLabel={Constants.search}
       />
 
-      {news? (
+      {newsArticle? (
         <FlatList 
           data = {newsArticle}
           keyExtractor={(item, itemIndex) => itemIndex}
           ItemSeparatorComponent={ListViewItemSeparator}
-          // onEndReachedThreshold={0.3}
-          // onEndReached={() => setNewsPage(newsPage+1)}
+          onEndReachedThreshold={0.5}
+          onEndReached={() => setNewsPage(newsPage+1)}
           refreshControl={
             <RefreshControl
-                refreshing={isRefreshing}
-                onRefresh={pullToRefresh}
-                tintColor={"blue"}
+              refreshing={isRefreshing}
+              onRefresh={pullToRefresh}
+              tintColor={Colors.Green}
             />
           }
           renderItem={renderCategory}
         /> ) : (
           <ActivityIndicator 
             animating={true} 
-            size={"large"}
-            color="green"
+            size={Constants.large}
+            color={Colors.Green}
           />
-        )}
+        )
+      }
       
-
     </View>
-  )
-}
+  );
+};
 
-export default DashboardScreen
+export default DashboardScreen;
