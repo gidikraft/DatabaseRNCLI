@@ -7,8 +7,9 @@ import styles from '../screens/screen.styles/LocalNewsStyles';
 import { CustomText } from '../components/DbText';
 import { TaskInput } from '../components/Inputs';
 import { Colors, Constants } from '../utils';
+import Swipeable from 'react-native-gesture-handler/Swipeable'
 
-const LocalNews = ({ navigation }) => {
+const LocalNews = () => {
   const [newsPage, setNewsPage] = useState(0);
   const [localNewsArticle, setLocalNewsArticle] = useState();
   const [isLoading, setIsLoading] = useState(false);
@@ -46,43 +47,56 @@ const LocalNews = ({ navigation }) => {
     setIsRefreshing(false)
   }, []);
 
-  const handleNewsTouch = item => Linking.openURL(item.url)
+  const handleNewsTouch = item => {
+    // Linking.openURL(item.url)
+  }
+
+  const leftSwipe = () => (
+    <View style={styles.swipeView} >
+      <CustomText caption={"Delete"} />
+    </View>
+  )
 
   const renderCategory = ({item}) => {
     if (item.description !== null && item.content !== null) {
       if(item.description.toLowerCase().includes(searchInput.toLowerCase().trim())
         || item.content.toLowerCase().includes(searchInput.toLowerCase().trim())) {
         return (
-          <TouchableOpacity onPress={() => handleNewsTouch(item)} style={styles.newsContainer} >
-            <Image
-              style={styles.tinyLogo}
-              resizeMode="cover"
-              source={{uri: item.urlToImage}}
-            />
-            
-            <View style={styles.databaseList}>
-  
-              <View style={styles.titleView}>
-                <Text style={styles.itemTitle}>
-                  {item.author}:
-                </Text>
+          <Swipeable 
+            renderLeftActions={leftSwipe}
+          >
+            <TouchableOpacity onPress={() => handleNewsTouch(item)} style={styles.newsContainer} >
+              <Image
+                style={styles.tinyLogo}
+                resizeMode="cover"
+                source={{uri: item.urlToImage}}
+              />
+              
+              <View style={styles.databaseList}>
+    
+                <View style={styles.titleView}>
+                  <Text style={styles.itemTitle}>
+                    {item.author}:
+                  </Text>
+                </View>
+    
+                <View style={styles.bodyView} >
+                  <CustomText caption={item.description} style={styles.itemBody} />
+    
+                  <CustomText 
+                    caption={ item.publishedAt.slice(11, 19) + ' ' + item.publishedAt.slice(0, 10) }
+                    style={styles.createdAt}
+                  />
+    
+                  <CustomText
+                    caption={`Source: ${item.source.name}`} 
+                    style={styles.points}
+                  />
+                </View>
               </View>
-  
-              <View style={styles.bodyView} >
-                <CustomText caption={item.description} style={styles.itemBody} />
-  
-                <CustomText 
-                  caption={ item.publishedAt.slice(11, 19) + ' ' + item.publishedAt.slice(0, 10) }
-                  style={styles.createdAt}
-                />
-  
-                <CustomText
-                  caption={`Source: ${item.source.name}`} 
-                  style={styles.points}
-                />
-              </View>
-            </View>
-          </TouchableOpacity>
+            </TouchableOpacity>
+
+          </Swipeable>
             
         )
       }

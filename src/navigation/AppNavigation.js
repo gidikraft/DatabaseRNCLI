@@ -6,6 +6,7 @@ import HomeScreen from '../screens/HomeScreen';
 import DashboardScreen from '../screens/DashboardScreen';
 import DrawerNav from './DrawerNav';
 import TopBarNavigation from './TopBarNavigation';
+import BottomTabNavigation from './BottomNavigation';
 
 const Stack = createNativeStackNavigator();
 
@@ -34,6 +35,12 @@ const AppNavigation = () => {
                 <Stack.Screen
                     name="TopBarNav"
                     component={TopBarNavigation}
+                    options={{ headerShown: false }}
+                />
+                
+                <Stack.Screen
+                    name="BottomNav"
+                    component={BottomTabNavigation}
                     options={{ headerShown: false }}
                 />
                 

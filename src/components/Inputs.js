@@ -35,6 +35,7 @@ const SecondInput = (props) => {
                 autoCapitalize={props.autoCapitalize}
                 onChangeText={text => props.onChangeText(text)}
                 style={[styles.input, props.style]}
+                secureTextEntry={props.secureTextEntry}
 
             />
         </View>

@@ -20,7 +20,8 @@ const styles = StyleSheet.create({
         // textAlign: Constants.center
     },
     logoutIcon: {
-        tintColor: Colors.Green,
+        tintColor: Colors.Background_Brown,
+        marginLeft: 5,
     },
     logoutView: {
         alignItems: Constants.center,

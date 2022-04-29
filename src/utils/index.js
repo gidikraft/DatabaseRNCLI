@@ -3,7 +3,7 @@ const Constants = {
     row: 'row',
     bold: 'bold',
     none: 'none',
-    Enter_task: "Enter task",
+    Enter_task: "Enter username",
     Enter_password: "Enter password",
     Delete_Id: "Enter id",
     Enter_Id: "Enter password",
@@ -24,6 +24,7 @@ const Colors = {
     Background_Gray: '#e1e8e6',
     Red: '#e30909',
     Primary_Color: "#5359D1",
+    Background_Brown: '#A17243',
 }
 
 const Fonts = {

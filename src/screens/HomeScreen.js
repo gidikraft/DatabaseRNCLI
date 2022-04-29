@@ -61,7 +61,7 @@ const HomeScreen = ({ navigation }) => {
                 [name, password],
                 (sqlTx, res) => {
                     console.log(`name:${name} password:${password} added successfully`)
-                    navigation.navigate("TopBarNav")
+                    navigation.navigate("BottomNav")
                 },
                 error => {console.log(`error on logging in` +  error.message);}
             )
@@ -76,7 +76,7 @@ const HomeScreen = ({ navigation }) => {
                 (txSql, res) => {
                     let len = res.rows.length
                     if (len > 0) {
-                        navigation.navigate("TopBarNav")
+                        navigation.navigate("BottomNav")
                     }
                 },
                 error => {
@@ -113,6 +113,7 @@ const HomeScreen = ({ navigation }) => {
                 onChangeText={(passwordText) => handlePasswordChange(passwordText)}
                 autoCapitalize={'none'}
                 style={styles.taskInput}
+                secureTextEntry={true}
             />
             <BlueButton style={styles.blueButton} caption={Constants.Submit_Name} onPress={validateInput} />
 

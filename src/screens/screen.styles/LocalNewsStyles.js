@@ -78,7 +78,9 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 5,
         // marginTop: 10
     },
-
+    swipeView : {
+        backgroundColor: Colors.Red
+    }
       
 });
 

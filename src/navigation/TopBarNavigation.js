@@ -20,7 +20,7 @@ const TopBarNavigation = () => {
             activeBackgroundColor: '#CE4418',
             inactiveBackgroundColor: '#b55031',
               tabBarStyle: {
-                backgroundColor: Colors.Green,
+                backgroundColor: Colors.Background_Brown,
                 paddingBottom: 3
               },
               tabBarLabelStyle: {

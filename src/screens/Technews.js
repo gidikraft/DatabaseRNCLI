@@ -1,5 +1,5 @@
 import { 
-    View, Text, TouchableOpacity, RefreshControl, FlatList, Image, SafeAreaView
+    View, Text, TouchableOpacity, RefreshControl, FlatList, SafeAreaView, Linking
 } from 'react-native'
 import React, { useEffect, useState, useCallback } from 'react';
 import { getNews } from '../redux/actions';
@@ -78,6 +78,7 @@ const Technews = () => {
                     keyExtractor={(item, itemIndex) => itemIndex}
                     onEndReachedThreshold={0.5}
                     onEndReached={() => getNews}
+                    showsVerticalScrollIndicator={false}
                     refreshControl={
                     <RefreshControl
                         refreshing={isRefreshing}

@@ -10,6 +10,8 @@ import { ListViewItemSeparator } from '../components/ItemSeperator';
 import { TaskInput } from '../components/Inputs';
 import LogoutIcon from  '../../assets/images/logout.png'
 import { Colors, Constants } from '../utils';
+import { Rect, Svg, Circle, SvgUri } from 'react-native-svg';
+import HomeSvg from '../../assets/images/home.svg'
 
 const db = openDatabase({
   name: 'news_sqlite'
@@ -106,15 +108,24 @@ const DashboardScreen = ({ navigation }) => {
   const handleNewsTouch = item => Linking.openURL(item.url)
 
   const renderNews = ({item}) => {
-    if(item.description.toLowerCase().includes(searchInput.toLowerCase().trim())
-      || item.content.toLowerCase().includes(searchInput.toLowerCase().trim())) {
+    if(item.content.toLowerCase().includes(searchInput.toLowerCase().trim())) {
       return (
         <TouchableOpacity onPress={() => handleNewsTouch}>
+          {/* {item.urlToImage === undefined? (
+            <Image
+              style={styles.tinyLogo}
+              resizeMode="cover"
+              source={{uri: item.urlToImage}}
+            />
+          ) : (
+            <CustomText caption={"Image not available"} />
+          )} */}
           
           <Image
             style={styles.tinyLogo}
             resizeMode="cover"
             source={{uri: item.urlToImage}}
+            loadingIndicatorSource={require('../../assets/images/profileImage.png')}
           />
           <View style={styles.databaseList}>
 
@@ -150,9 +161,20 @@ const DashboardScreen = ({ navigation }) => {
       <View style={styles.headerView} >
         <CustomText caption={`${Constants.welcome} ${username}`} style={styles.header} onPress={() =>  navigation.navigate('Home')} />
 
+        {/* <Svg width="10%" height="100%" viewBox="0 0 100 100">
+          <Rect x={0} y={0} width={100} height={100} fill="green" stroke="black" />
+          <Circle cx={50} cy={50} r={50} fill="blue" stroke="white" opacity={0.5} />
+        </Svg> */}
+        {/* <SvgUri
+          width="10%"
+          height="100%"
+          uri="https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/debian.svg"
+        /> */}
+        {/* <HomeSvg width={20} height={20} /> */}
         <TouchableOpacity style={styles.logoutView} onPress={() => signoutDb()} >
           <CustomText caption={"Log out"}/>
           <Image source={LogoutIcon} style={styles.logoutIcon} />
+          
         </TouchableOpacity>
 
       </View>
@@ -171,6 +193,7 @@ const DashboardScreen = ({ navigation }) => {
           ItemSeparatorComponent={ListViewItemSeparator}
           onEndReachedThreshold={0.5}
           onEndReached={() => setNewsPage(newsPage+1)}
+          showsVerticalScrollIndicator={false}
           refreshControl={
             <RefreshControl
               refreshing={isRefreshing}

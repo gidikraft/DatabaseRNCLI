@@ -6,6 +6,7 @@ import HomeScreen from '../screens/HomeScreen';
 import DashboardScreen from '../screens/DashboardScreen';
 import DrawerNavContent from '../components/DrawerNavContent';
 import LocalNews from '../screens/LocalNews';
+import Technews from '../screens/Technews';
 
 const Drawer = createDrawerNavigator();
 
@@ -20,6 +21,7 @@ export default function DrawerNav() {
             {/* <Drawer.Screen name="Home" component={HomeScreen} /> */}
             <Drawer.Screen name="Dashboard" component={DashboardScreen} />
             <Drawer.Screen name="LocalNews" component={LocalNews} />
+            <Drawer.Screen name="TechNews" component={Technews} />
         </Drawer.Navigator>
     // </NavigationContainer>
     
